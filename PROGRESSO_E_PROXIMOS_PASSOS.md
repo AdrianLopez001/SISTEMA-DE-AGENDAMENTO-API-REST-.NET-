@@ -2,6 +2,25 @@
 
 > **Documento de Continuidade:** registra o que foi feito em cada fase e serve de guia de estudo do projeto.
 
+## 🎯 OBJETIVO DE ESTUDO
+Reforçar o desenvolvimento de APIs REST aprendendo uma linguagem nova: **C# com .NET**.
+
+## 🧑‍💻 O QUE EU FIZ
+- Defini a **arquitetura** (Clean Architecture em 4 camadas) e a **estrutura de pastas e arquivos**.
+- Configurei a **solução, os projetos e as referências** entre as camadas.
+- Fiz a **modelagem do domínio**: entidades, enums, exceções e interfaces de repositório.
+- Defini as **regras de negócio e os requisitos**: conflito de horário, grade de disponibilidade e cancelamento com 2h de antecedência.
+- Fiz o **planejamento em fases** e a documentação do projeto.
+
+## 🤖 ONDE A IA AUXILIOU
+- **Sintaxe da linguagem**, já que ainda estou aprendendo C#.
+- **Implementação** de partes da infraestrutura (EF Core, Identity, JWT) e da camada de API.
+- **Testes unitários** (xUnit + Moq).
+
+## 📚 O QUE AINDA QUERO EVOLUIR
+- Escrever sozinho as próximas funcionalidades e testes, com menos apoio da IA.
+- Testes de integração, Docker e paginação (lista completa no README).
+
 ---
 
 ## 🟢 STATUS: TODAS AS FASES CONCLUÍDAS
@@ -48,11 +67,3 @@
 
 ---
 
-## ⚠️ Pendência local (não afeta o GitHub)
-
-A migration `InitialCreate` **não foi gerada nesta máquina**. O Smart App Control do Windows 11 bloqueou o carregamento de `MinhaAgendaApi.Presentation.dll` pelo `dotnet ef` (erro 0x800711C7). Quem clonar o projeto gera a migration pelos comandos do README:
-
-```powershell
-dotnet ef migrations add InitialCreate --project src/Infrastructure --startup-project src/Presentation
-dotnet ef database update --project src/Infrastructure --startup-project src/Presentation
-```

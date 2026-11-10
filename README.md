@@ -14,6 +14,21 @@ API RESTful desenvolvida em **.NET 10 / C#** para gestão de agendamentos e hor�
 
 ---
 
+## 🧑‍💻 Sobre o desenvolvimento
+
+Projeto de estudo para reforçar o desenvolvimento de APIs REST em uma linguagem nova para mim: **C# com .NET**.
+
+| Eu fiz | A IA auxiliou |
+| :--- | :--- |
+| Arquitetura e estrutura de pastas e arquivos | Sintaxe da linguagem C# |
+| Solução, projetos e referências entre camadas | Implementação de partes da infraestrutura e da API |
+| Modelagem do domínio (entidades, enums, interfaces) | Testes unitários (xUnit + Moq) |
+| Regras de negócio, requisitos e planejamento em fases | |
+
+O arquivo [PROGRESSO_E_PROXIMOS_PASSOS.md](PROGRESSO_E_PROXIMOS_PASSOS.md) registra o estudo de cada fase.
+
+---
+
 ## 🏗️ Arquitetura
 
 ```text
