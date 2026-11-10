@@ -1,0 +1,86 @@
+@host = http://localhost:5048
+# cole aqui o token retornado no login
+@token = COLE_O_TOKEN_AQUI
+@prestadorId = 00000000-0000-0000-0000-000000000000
+@agendamentoId = 00000000-0000-0000-0000-000000000000
+
+### Cadastrar prestador
+POST {{host}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "nomeCompleto": "Maria Prestadora",
+  "email": "maria@exemplo.com",
+  "senha": "senha123",
+  "tipoPerfil": "Prestador"
+}
+
+### Cadastrar cliente
+POST {{host}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+  "nomeCompleto": "Joao Cliente",
+  "email": "joao@exemplo.com",
+  "senha": "senha123",
+  "tipoPerfil": "Cliente"
+}
+
+### Login
+POST {{host}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "maria@exemplo.com",
+  "senha": "senha123"
+}
+
+### Cadastrar grade semanal (logado como Prestador)
+POST {{host}}/api/v1/disponibilidade
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "itens": [
+    { "diaDaSemana": "Monday",    "horaInicio": "08:00:00", "horaFim": "12:00:00" },
+    { "diaDaSemana": "Monday",    "horaInicio": "13:00:00", "horaFim": "18:00:00" },
+    { "diaDaSemana": "Wednesday", "horaInicio": "08:00:00", "horaFim": "12:00:00" }
+  ]
+}
+
+### Ver grade de um prestador
+GET {{host}}/api/v1/disponibilidade/{{prestadorId}}/grade
+Authorization: Bearer {{token}}
+
+### Consultar horarios livres em uma data
+GET {{host}}/api/v1/disponibilidade?prestadorId={{prestadorId}}&data=2026-11-23&duracaoMinutos=60
+Authorization: Bearer {{token}}
+
+### Criar agendamento (logado como Cliente)
+POST {{host}}/api/v1/agendamentos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "prestadorId": "{{prestadorId}}",
+  "dataHoraInicio": "2026-11-23T09:00:00-03:00",
+  "dataHoraFim": "2026-11-23T10:00:00-03:00",
+  "observacao": "Primeira consulta"
+}
+
+### Meus agendamentos
+GET {{host}}/api/v1/agendamentos/meus
+Authorization: Bearer {{token}}
+
+### Cancelar agendamento (Cliente ou Admin)
+PATCH {{host}}/api/v1/agendamentos/{{agendamentoId}}/cancelar
+Authorization: Bearer {{token}}
+
+### Alterar status (Prestador ou Admin)
+PATCH {{host}}/api/v1/agendamentos/{{agendamentoId}}/status
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "status": "Confirmado"
+}
